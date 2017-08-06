@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/vallejoj/express-gallery#readme",
   "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-install": "^1.1.0",
+    "gulp-sass": "^3.1.0",
     "handlebars": "^4.0.10",
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
