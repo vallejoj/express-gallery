@@ -1,0 +1,31 @@
+<h1>Edit</h1>
+{{#if photo}}
+<form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="PUT" >
+Author: <input type="text" name="author"><br>
+<input type="submit" value="submit">
+</form>
+
+<form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="DELETE" >
+<input type="submit" value="Delete">
+</form>
+
+<div class="photo">
+  <h2>Author:{{photo.author}}</h2>
+  <h2>ID:{{photo.id}}</h2>
+  <img src="{{photo.link}}" alt="not working">
+  <h2>description:{{photo.description}}</h2>
+</div>
+
+
+
+{{else}}
+<h1>Product Not Found</h1>
+<form action="/products/" method="post">
+Name: <input type="text" name="name"><br>
+Price: <input type="text" name="price"><br>
+Inventory <input type="text" name="inventory"><br>
+<input type="submit" value="Submit">
+</form>
+{{/if}}

@@ -1,0 +1,27 @@
+{
+  "name": "express-gallery",
+  "version": "1.0.0",
+  "description": "Express Gallery ===============",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vallejoj/express-gallery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vallejoj/express-gallery/issues"
+  },
+  "homepage": "https://github.com/vallejoj/express-gallery#readme",
+  "dependencies": {
+    "handlebars": "^4.0.10",
+    "pg": "^7.1.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.4.2",
+    "sequelize-cli": "^2.8.0"
+  }
+}

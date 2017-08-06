@@ -1,0 +1,20 @@
+{{#if photo}}
+
+<div class="photo">
+  <h2>Author:{{photo.author}}</h2>
+  <h2>ID:{{photo.id}}</h2>
+  <img src="{{photo.link}}" alt="not working">
+  <h2>description:{{photo.description}}</h2>
+</div>
+
+
+
+{{else}}
+<h1>Listing Not Found</h1>
+<form action="/gallery/new" method="post">
+  Author: <input type="text" name="name"><br>
+  Picture: <input type="text" name="link"><br>
+  Description <input type="text" name="description"><br>
+  <input type="submit" value="Submit">
+</form>
+{{/if}}
