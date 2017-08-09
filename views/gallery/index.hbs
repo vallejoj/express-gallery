@@ -1,11 +1,11 @@
-<h1>ARCHITEKT</h1>
+<h1>_ARCHITEKT</h1>
+<div class="container">
 
-{{#each gallery}}
-<div class="gallery">
+  {{#each gallery}}
+    <div class="image_container">
+      <img id="img{{id}}"src="{{link}}" alt="not working">
+      <h2 class="underbox">{{author}}: {{description}}</h2>
+    </div>
 
-  <img src="{{link}}" alt="not working">
-    <h2>Author:{{author}}</h2>
-  <h2>Description:{{description}}</h2>
+  {{/each}}
 </div>
-
-{{/each}}

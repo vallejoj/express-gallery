@@ -3,10 +3,9 @@ var scss = require('gulp-sass')
 var browserSync = require('browser-sync').create()
 
 browserSync.init({
-  server: {
-    baseDir: "./public"
-  }
+    proxy: 'localhost:8000'
 });
+
 
 gulp.task('scss', function () {
   return gulp.src('./scss/*.scss')
