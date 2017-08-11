@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const app = express();
-const exphbs = require('express-handlebars');
-const bp = require('body-parser');
+
+
 const Gallery = require('../models').Gallery;
 
-app.use(bp.urlencoded());
-
-
 router.get('/',(req,res) => {
+
   Gallery.findAll()
   .then((gallery) =>{
+      console.log("look at our", req.user)
     res.render('gallery/index', {
-      gallery
+      gallery,
+      user:req.user
     })
   })
   .catch((err)=>{
@@ -100,6 +100,11 @@ router.route('/:id/edit')
       console.log(err)
     })
   });
+
+
+
+
+
 
 
 module.exports = router;

@@ -3,6 +3,7 @@ var scss = require('gulp-sass')
 var browserSync = require('browser-sync').create()
 
 browserSync.init({
+   startPath: '/gallery',
     proxy: 'localhost:8000'
 });
 

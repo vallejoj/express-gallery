@@ -1,0 +1,29 @@
+
+{{#if user}}
+
+<h1 id= "welcome">Welcome {{user.username}}</h1>
+
+
+{{else}}
+
+<label class="dropdown">
+
+  <div class="dd-button">
+    LOGIN
+  </div>
+
+  <input type="checkbox" class="dd-input" id="test">
+
+  <ul class="dd-menu">
+   <form class="form" action="/login" method="post">
+  Username: <input type="text" name="username"><br>
+  Password:  <input type="text" name="password"><br>
+  <input type="submit" value="Submit">
+</form>
+
+  </ul>
+
+</label>
+
+
+{{/if}}

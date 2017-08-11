@@ -22,6 +22,8 @@
     "gulp-install": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "handlebars": "^4.0.10",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.4.2",
