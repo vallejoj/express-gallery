@@ -8,14 +8,21 @@ const bp = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const session = require('express-session');
-
+const RedisStore = require("connect-redis")(session);
 const User = require('./models').User;
 const app = express();
 
+
+//dfasdf
 app.use(bp.urlencoded());
 app.use(session({
-  secret: 'I am watching the west wing'
+  store: new RedisStore(),
+  secret: "I watch the west wing",
+  cookie: {
+    maxage: 600
+  }
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 

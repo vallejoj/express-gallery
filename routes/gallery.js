@@ -7,7 +7,9 @@ const Gallery = require('../models').Gallery;
 
 router.get('/',(req,res) => {
 
-  Gallery.findAll()
+  Gallery.findAll({
+    order: [ [ "createdAt", "DESC"]]
+  })
   .then((gallery) =>{
       console.log("look at our", req.user)
     res.render('gallery/index', {

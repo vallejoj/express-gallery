@@ -1,16 +1,19 @@
+<div class="container">
 <div class="header">
 
-<h1>_POLETEKT</h1>
+<h1 id="title">_POLETEKT</h1>
 {{>login}}
 
 </div>
-<div class="container">
 
+<div class="gallery-container">
   {{#each gallery}}
-    <div class="image_container">
-      <img id="img{{id}}"src="{{link}}" alt="not working">
+     <div class="image-container">
+       <a href="/gallery:id/edit">
+      <img class="image"src="{{link}}" alt="not working">
+      </a>
       <h2 class="underbox">{{author}}: {{description}}</h2>
     </div>
-
   {{/each}}
+  </div>
 </div>

@@ -1,7 +1,28 @@
 
 {{#if user}}
 
-<h1 id= "welcome">Welcome {{user.username}}</h1>
+<label class="dropdown">
+
+  <div class="dd-button">
+    NEW PIC
+  </div>
+
+  <input type="checkbox" class="dd-input" id="test">
+
+  <ul class="dd-menu">
+  <form action="/gallery" method="post">
+  <label for="Author">Author</label>
+  <input id="Author" type="text" name="Author" placeholder="Author">
+  <label for="description">Description</label>
+  <input id = "description" type="text" name="description" placeholder="Description">
+  <label for="link">Link</label>
+  <input id = "link" type="text" name="link" placeholder="Link">
+  <input type="submit" name="" value="Send">
+</form>
+</ul>
+
+</label>
+
 
 
 {{else}}
