@@ -12,8 +12,6 @@ const RedisStore = require("connect-redis")(session);
 const User = require('./models').User;
 const app = express();
 
-
-//dfasdf
 app.use(bp.urlencoded());
 app.use(session({
   store: new RedisStore(),
@@ -105,6 +103,10 @@ app.use('/login', login);
     })        // ^ add the serialized information into the request object
   });
 
+  app.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.redirect("/gallery");
+  });
 
 
   app.post('/login', passport.authenticate('local',

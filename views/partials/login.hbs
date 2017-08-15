@@ -1,5 +1,7 @@
 
 {{#if user}}
+<div class="logout-container">
+
 
 <label class="dropdown">
 
@@ -10,9 +12,9 @@
   <input type="checkbox" class="dd-input" id="test">
 
   <ul class="dd-menu">
-  <form action="/gallery" method="post">
+  <form action="/gallery/new" method="post">
   <label for="Author">Author</label>
-  <input id="Author" type="text" name="Author" placeholder="Author">
+  <input id="Author" type="text" name="author" placeholder="Author">
   <label for="description">Description</label>
   <input id = "description" type="text" name="description" placeholder="Description">
   <label for="link">Link</label>
@@ -21,12 +23,19 @@
 </form>
 </ul>
 
-</label>
 
+
+</label>
+<form class="form" action="/logout" method="GET">
+<button id="logout-button">
+LOGOUT
+</button>
+</form>
+</div>
 
 
 {{else}}
-
+<div class="logout-container">
 <label class="dropdown">
 
   <div class="dd-button">
@@ -45,6 +54,6 @@
   </ul>
 
 </label>
-
+</div>
 
 {{/if}}

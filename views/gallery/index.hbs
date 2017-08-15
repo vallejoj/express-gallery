@@ -1,7 +1,7 @@
 <div class="container">
 <div class="header">
 
-<h1 id="title">_POLETEKT</h1>
+<h1 class="title">_POLETEKT</h1>
 {{>login}}
 
 </div>
@@ -9,7 +9,7 @@
 <div class="gallery-container">
   {{#each gallery}}
      <div class="image-container">
-       <a href="/gallery:id/edit">
+       <a href="/gallery/{{id}}/edit">
       <img class="image"src="{{link}}" alt="not working">
       </a>
       <h2 class="underbox">{{author}}: {{description}}</h2>

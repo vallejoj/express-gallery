@@ -1,29 +1,56 @@
-<h1>Edit</h1>
-{{#if photo}}
-<form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
-  <input type="hidden" name="_method" value="PUT" >
-Author: <input type="text" name="author"><br>
-<input type="submit" value="Submit">
-</form>
+<div class="container2">
 
-<form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
-  <input type="hidden" name="_method" value="DELETE" >
-<input type="submit" value="Delete">
-</form>
 
-<div class="photo_edit">
+  <div class="edit-header">
 
-  <h2>ID:{{photo.id}}</h2>
-  <img src="{{photo.link}}" alt="not working">
-  <h2>{{photo.author}}:{{photo.description}}</h2>
+    <h1 id="edit-title">
+      <a href="/gallery">_POLETEKT   </a>
+      </h1>
+
+
+    {{#if photo}}
+      <div class="edit-container">
+        <label class="dropdown2">
+
+        <p id="edit-button">
+          EDIT
+        </p>
+          <input type="checkbox" class="dd-input2" id="test">
+            <ul class="dd-menu2">
+        <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="_method" value="PUT">
+          AUTHOR: <input type="text" name="author"value = "{{photo.author}}"><br>
+          LINK: <input type="text" name="link" value = "{{photo.link}}"><br>
+          DESCRIPTION: <input type="text" name="description" value = "{{photo.description}}"><br>
+          <input type="submit" name="" value="Send">
+        </form>
+        </ul>
+
+        <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="_method" value="DELETE">
+          <submit id="delete" type="submit" value="Delete">
+        </form>
+
+      </label>
+      <h1 id="delete-button">
+      DELETE
+    </h1>
+      </div>
+  </div>
+
+  <div class="photo_edit">
+
+    <img id="image" src="{{photo.link}}" alt="not working">
+
+        <h2 id="underbox">{{photo.author}}:{{photo.description}}</h2>
+
+  </div>
+
+  {{else}}
+    <h1>Product Not Found</h1>
+    <form action="/products/" method="post">
+      Name: <input type="text" name="name"><br> Price: <input type="text" name="price"><br> Inventory <input type="text" name="inventory"><br>
+      <input type="submit" value="Submit">
+    </form>
+    {{/if}}
 </div>
-
-{{else}}
-<h1>Product Not Found</h1>
-<form action="/products/" method="post">
-Name: <input type="text" name="name"><br>
-Price: <input type="text" name="price"><br>
-Inventory <input type="text" name="inventory"><br>
-<input type="submit" value="Submit">
-</form>
-{{/if}}

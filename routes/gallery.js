@@ -5,8 +5,9 @@ const app = express();
 
 const Gallery = require('../models').Gallery;
 
-router.get('/',(req,res) => {
 
+
+router.get('/',(req,res) => {
   Gallery.findAll({
     order: [ [ "createdAt", "DESC"]]
   })
