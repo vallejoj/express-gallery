@@ -6,20 +6,21 @@
 <label class="dropdown">
 
   <div class="dd-button">
-    NEW PIC
+    _NEW PIC
   </div>
 
   <input type="checkbox" class="dd-input" id="test">
 
   <ul class="dd-menu">
-  <form action="/gallery/new" method="post">
-  <label for="Author">Author</label>
+  <form class="form" action="/gallery/new" method="post">
+  <label for="Author">AUTHOR</label>
   <input id="Author" type="text" name="author" placeholder="Author">
-  <label for="description">Description</label>
+  <label for="description">DESCRIPTION</label>
   <input id = "description" type="text" name="description" placeholder="Description">
   <label for="link">Link</label>
-  <input id = "link" type="text" name="link" placeholder="Link">
-  <input type="submit" name="" value="Send">
+  <input id = "link" type="text" name="link" placeholder="LINK">
+  <button id ="new-pic-button" type="submit"><u>SEND</u></button>
+
 </form>
 </ul>
 
@@ -28,7 +29,7 @@
 </label>
 <form class="form" action="/logout" method="GET">
 <button id="logout-button">
-LOGOUT
+_LOGOUT
 </button>
 </form>
 </div>
@@ -39,16 +40,20 @@ LOGOUT
 <label class="dropdown">
 
   <div class="dd-button">
-    LOGIN
+    _LOGIN
   </div>
 
   <input type="checkbox" class="dd-input" id="test">
 
   <ul class="dd-menu">
    <form class="form" action="/login" method="post">
-  Username: <input type="text" name="username"><br>
-  Password:  <input type="text" name="password"><br>
-  <input type="submit" value="Submit">
+  USERNAME: <input type="text" name="username"><br>
+  PASSWORD:  <input type="text" name="password"><br>
+  <button id="login-button" type="submit" ><u>SUBMIT</u></button>
+
+  <a href="/gallery/new">
+  <h1 id="new-user-button"><u>NEW USER?</u></h1>
+  </a>
 </form>
 
   </ul>

@@ -23,6 +23,10 @@ router.get('/',(req,res) => {
   })
 });
 
+
+
+
+
 router.route('/new')
 .get((req,res)=>{
   Gallery.findAll()
@@ -71,7 +75,7 @@ router.route('/:id/edit')
       }
     })
     .then((gallery) =>{
-      res.redirect(`/gallery/${req.params.id}`)
+      res.redirect(`/gallery/${req.params.id}/edit`)
     })
     .catch((err)=>{
       console.log(err)
