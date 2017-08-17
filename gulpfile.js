@@ -1,6 +1,6 @@
-var gulp = require('gulp')
-var scss = require('gulp-sass')
-var browserSync = require('browser-sync').create()
+const gulp = require('gulp')
+const scss = require('gulp-sass')
+const browserSync = require('browser-sync').create()
 
 browserSync.init({
    startPath: '/gallery',

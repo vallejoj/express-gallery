@@ -5,45 +5,41 @@
 
     <h1 id="edit-title">
       <a href="/gallery">_POLETEKT   </a>
-      </h1>
+    </h1>
 
 
     {{#if photo}}
       <div class="edit-container">
         <label class="dropdown2">
 
-        <p id="edit-button">
-          EDIT
-        </p>
-          <input type="checkbox" class="dd-input2" id="test">
+            <p id="edit-button">
+              EDIT
+            </p>
+              <input type="checkbox" class="dd-input2" id="test">
             <ul class="dd-menu2">
-        <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
-          <input type="hidden" name="_method" value="PUT">
-          AUTHOR: <input type="text" name="author"value = "{{photo.author}}"><br>
-          LINK: <input type="text" name="link" value = "{{photo.link}}"><br>
-          DESCRIPTION: <input type="text" name="description" value = "{{photo.description}}"><br>
-          <button id="send-edit" type="submit">_SEND</button>
-        </form>
-        </ul>
 
-        <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
-          <input type="hidden" name="_method" value="DELETE">
-          <submit id="delete" type="submit" value="Delete">
-        </form>
+            <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
+              <input type="hidden" name="_method" value="PUT">
+              AUTHOR: <input type="text" name="author"value = "{{photo.author}}"><br>
+              LINK: <input type="text" name="link" value = "{{photo.link}}"><br>
+              DESCRIPTION: <input type="text" name="description" value = "{{photo.description}}"><br>
+              <button id="send-edit" type="submit">_SEND</button>
+            </form>
 
-      </label>
-      <h1 id="delete-button">
-      DELETE
-    </h1>
+            </ul>
+
+            <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
+              <input type="hidden" name="_method" value="DELETE">
+              <button id="delete-button" type="submit">DELETE</button>
+            </form>
+
+          </label>
       </div>
   </div>
 
   <div class="photo_edit">
-
     <img id="image" src="{{photo.link}}" alt="not working">
-
-        <h2 id="underbox">{{photo.author}}:{{photo.description}}</h2>
-
+    <h2 id="underbox">{{photo.author}}:{{photo.description}}</h2>
   </div>
 
   {{else}}

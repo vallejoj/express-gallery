@@ -7,7 +7,6 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   flex-grow: 3;
-  width: 1000px;
   flex-basis: auto;
   margin: 0 auto 0 auto; }
   .container .gallery-container {
@@ -16,7 +15,6 @@ a {
     flex-wrap: wrap;
     flex-grow: 3;
     flex-basis: auto;
-    width: 890px;
     margin-left: -15px; }
     .container .gallery-container .image-container {
       margin-left: 30px; }
@@ -263,7 +261,10 @@ form {
   font-family: 'Merriweather Sans', sans-serif;
   color: #4D4D4D;
   font-size: 25px;
-  margin-top: 50px; }
+  margin-top: -20px;
+  margin-left: -10px;
+  background: none;
+  border: none; }
 
 .dropdown2 {
   display: flex;
@@ -363,12 +364,10 @@ form {
 
 @media screen and (max-width: 600px) {
   .container {
-    width: 300px;
-    max-width: 300px;
     display: flex;
     margin: 0 auto 0 auto; }
   .image {
-    width: 300px;
+    width: 100%;
     height: 160px;
     object-fit: cover; }
   .header .title {
@@ -377,7 +376,7 @@ form {
     font-size: 30px;
     border-right: dotted 1px;
     border-color: #D3D3D3;
-    width: 233px;
+    width: 100%;
     height: 70px;
     margin-top: 8px; }
   .dd-button {
@@ -396,7 +395,7 @@ form {
     color: #4D4D4D;
     font-size: 16px; }
   .image-container:first-child {
-    width: 300px;
+    width: 100%;
     height: 160px;
     object-fit: cover;
     margin-bottom: 16px; }
@@ -405,7 +404,7 @@ form {
       width: 100%;
       height: 100%; }
       .image-container:first-child a img {
-        width: 300px;
+        width: 100%;
         height: 100%;
         object-fit: cover; }
     .image-container:first-child .underbox {
@@ -448,3 +447,13 @@ form {
     margin-left: -42px;
     font-size: 16px;
     width: 75px; } }
+
+@media screen and (min-width: 1000px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 3;
+    width: 900px;
+    flex-basis: auto;
+    margin: 0 auto 0 auto; } }

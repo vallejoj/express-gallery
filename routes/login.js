@@ -3,6 +3,7 @@ const router = express.Router();
 const app = express();
 const bcrypt = require('bcrypt');
 const User = require('../models').User;
+const saltRound = 10;
 
 router.post('/new', (req,res)=>{
   console.log( "username:",req.body.username)
@@ -17,12 +18,13 @@ bcrypt.genSalt(saltRound)
           username: req.body.username,
           password: hash
         })
+        res.redirect("/gallery");
       })
   })
   .catch(err=>{
     console.log(err)
   })
-})
+});
 
-const saltRound = 10;
+
 module.exports = router;
