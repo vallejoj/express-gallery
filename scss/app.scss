@@ -207,10 +207,13 @@ box-shadow: 10px 0px 10px #888888;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 0;
-  margin: 2px 0 0;
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
   background-color: #ffffff;
   list-style-type: none;
+      margin: 17px 0 0;
+      padding: 10px;
+      height: 125px;
+
 }
 
 .dd-input + .dd-menu {
@@ -269,6 +272,7 @@ box-shadow: 10px 0px 10px #888888;
   width:700px;
   height: 350px;
     object-fit: cover;
+    box-shadow: 10px 0px 10px #888888;
 }
 #underbox {
   display: flex;
@@ -299,6 +303,16 @@ width: 100px;
 margin-left: 270px;
 margin-bottom: 25px;
 
+}
+#send-edit{
+  color: #4D4D4D;
+  font-size: 16px;
+  font-family: 'Merriweather Sans', sans-serif;
+  background:none;
+border:none;
+padding:0;
+margin-right: 58px;
+    margin-top: -1px;
 }
 #delete-button{
   background-color: #ffffff;
@@ -353,10 +367,12 @@ margin-bottom: 25px;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 0;
-  margin: 2px 0 0;
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
   background-color: #ffffff;
   list-style-type: none;
+  margin: 17px 0 0;
+  padding: 10px;
+height: 156px;
 }
 
 .dd-input2 + .dd-menu2 {

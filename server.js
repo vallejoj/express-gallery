@@ -1,21 +1,25 @@
-const gallery= require('./routes/gallery.js');
-const login = require('./routes/login.js');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const db = require ('./models');
-const PORT = process.env.PORT || 8000;
 const bp = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const session = require('express-session');
 const RedisStore = require("connect-redis")(session);
-const User = require('./models').User;
+const bcrypt = require('bcrypt');
 const app = express();
+const CONFIG = require("./config/config.json");
+const User = require('./models').User;
+const PORT = process.env.PORT || 8000;
+const gallery= require('./routes/gallery.js');
+const login = require('./routes/login.js');
+
+
 
 app.use(bp.urlencoded());
 app.use(session({
   store: new RedisStore(),
-  secret: "I watch the west wing",
+  secret: CONFIG.SECRET_SESSION,
   cookie: {
     maxage: 600
   }
@@ -45,16 +49,20 @@ app.use(bp.urlencoded());
         where:{
           username:username
         }
-      }).then((user) =>{
-        console.log('user in local Strategy', user)
-        if(user.password === password){
-          console.log('username is sucessful')
-          return done(null, user)
-        }else{
-          console.log('password did not work')
-          return done(null, false, {message: 'Incorrect Password'})
-
-        }
+      }).then((user) => {
+        bcrypt.compare(password, user.password)
+        .then(result => {
+          if(result){
+            console.log('user name is correct!!')
+            return done(null,user)
+          }else{
+            console.log('password does not match')
+            return done(null, false, {message:'Password Incorrect'})
+          }
+          console.log(result)
+        }).catch( err=> {
+          console.log(err)
+        })
       }).catch((err) => {
         console.log('we found this', err)
         return done(null, false, {message: 'Incorrect Username'})
