@@ -39,12 +39,10 @@ const hbs = exphbs.create({
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
-app.use('/css', express.static('css'));
 app.use(bp.urlencoded());
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    console.log('is passpport working')
     User.findOne({
       where:{
         username:username
@@ -53,13 +51,10 @@ passport.use(new LocalStrategy(
       bcrypt.compare(password, user.password)
       .then(result => {
         if(result){
-          console.log('user name is correct!!')
           return done(null,user)
         }else{
-          console.log('password does not match')
           return done(null, false, {message:'Password Incorrect'})
         }
-        console.log(result)
       }).catch( err=> {
         console.log(err)
       })
@@ -91,13 +86,11 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(userId, done) {
-  console.log('adding user information into the req object')
   User.findOne({
     where :{
       id: userId
     }
   }).then((user) => {
-    console.log("user from serialize", user)
     return done(null, {
       id: user.id,
       username: user.username
@@ -113,6 +106,7 @@ app.get("/logout", (req, res) => {
 });
 
 
+
 app.post('/login', passport.authenticate('local',
  {
   successRedirect: '/gallery',
@@ -121,10 +115,8 @@ app.post('/login', passport.authenticate('local',
 
 function userAuthenticated (req, res, next){
   if (req.isAuthenticated()){
-    console.log('user is good')
     next()
   }else{
-    console.log('user is not good')
       res.redirect('/login')
     }
   }

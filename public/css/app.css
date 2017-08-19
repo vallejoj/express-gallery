@@ -141,7 +141,6 @@ form {
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 10px;
   font-size: 25px; }
 
 .dd-button {
@@ -163,8 +162,7 @@ form {
   background-color: #ffffff;
   list-style-type: none;
   margin: 17px 0 0;
-  padding: 10px;
-  height: 125px; }
+  padding: 10px; }
 
 .dd-input + .dd-menu {
   display: none; }
@@ -270,7 +268,6 @@ form {
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 10px;
   font-size: 25px; }
 
 .dd-button2 {
@@ -308,8 +305,7 @@ form {
   background-color: #ffffff;
   list-style-type: none;
   margin: 17px 0 0;
-  padding: 10px;
-  height: 156px; }
+  padding: 10px; }
 
 .dd-input2 + .dd-menu2 {
   display: none; }

@@ -3,14 +3,15 @@ const router = express.Router();
 const app = express();
 
 const Gallery = require('../models').Gallery;
-
+const photoMetas = require('../collections/photoMeta.js').photoMetas;
 
 router.get('/',(req,res) => {
+
+
   Gallery.findAll({
     order: [ [ "createdAt", "DESC"]]
   })
   .then(gallery =>{
-      console.log("look at our", req.user)
     res.render('gallery/index', {
       gallery,
       user:req.user
@@ -34,22 +35,48 @@ router.route('/new')
   })
 })
 .post((req,res) => {
-  console.log('this is author:',req.body)
  Gallery.create({
    link: req.body.link,
    author: req.body.author,
    description: req.body.description
  })
  .then((data)=>{
-   res.redirect('/gallery')
- }).catch((err)=>{
+   Gallery.findAll({
+     limit:1,
+     order: [ [ "createdAt", "DESC"]]
+   })
+ .then((item)=>{
+   console.log("ITEM: ", item[0].id);
+        if(req.body.meta){
+          let metaObj = req.body.meta;
+          metaObj.id = item[0].id;
+          photoMetas().insertOne( metaObj );
+             res.redirect('/gallery')
+        }else{
+          res.redirect('/gallery')
+        }
+
+    })
+ })
+  .catch((err)=>{
    console.log(err)
  })
 });
 
+router.get('/logins', (req,res)=>{
+  Gallery.findAll()
+  .then(gallery =>{
+    res.render('gallery/login', {
+      gallery
+    })
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+})
 
   router.get('/:id',(req,res) => {
-    console.log('first get')
+
     Gallery.findById(parseInt(req.params.id))
       .then((photo) =>{
         res.render('gallery/photo', {photo: photo})
@@ -60,16 +87,26 @@ router.route('/new')
   });
   router.route('/:id/edit')
     .get((req,res)=>{
-      console.log('we are getting')
-        Gallery.findById(parseInt(req.params.id))
+        var photoID = parseInt(req.params.id)
+        Gallery.findById(photoID)
       .then((photo) =>{
-        res.render('gallery/edit', {photo: photo})
+        var query = {id: photoID}
+        photoMetas().findOne(query,{id:0, _id:0})
+        .then((data)=>{
+        console.log('here is my', data)
+        res.render('gallery/edit', {
+          photo: photo,
+          data:data
+        })
+    })
+
       })
       .catch((err)=>{
         console.log(err)
       })
     })
     .put((req,res) =>{
+      console.log(req.body.meta)
       Gallery.update({
         author: req.body.author,
         link: req.body.link,
@@ -80,6 +117,13 @@ router.route('/new')
         }
       })
       .then((gallery) =>{
+        photoMetas().updateOne({id: parseInt(req.params.id)}, {
+                $set:req.body.meta
+
+              }).then(results=>{
+                console.log("RESULTS",results)
+              })
+              console.log("WHOOOOOO",req.body.meta)
         res.redirect(`/gallery/${req.params.id}/edit`)
       })
       .catch((err)=>{
@@ -87,7 +131,6 @@ router.route('/new')
       })
     })
     .delete((req,res)=>{
-      console.log('delete', req.params.id)
       Gallery.destroy({
         where:{
           id:req.params.id
