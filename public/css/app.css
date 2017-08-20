@@ -2,6 +2,9 @@ a {
   text-decoration: none;
   color: inherit; }
 
+.login-header {
+  margin-left: 18px; }
+
 .container {
   display: flex;
   flex-direction: row;
@@ -9,6 +12,13 @@ a {
   flex-grow: 3;
   flex-basis: auto;
   margin: 0 auto 0 auto; }
+  .container .header-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 3;
+    flex-basis: auto;
+    margin-left: -15px; }
   .container .gallery-container {
     display: flex;
     flex-direction: row;
@@ -55,55 +65,38 @@ form {
   display: flex;
   flex-direction: column; }
 
-.logout-container {
-  margin-top: 38px;
-  margin-left: 336px;
-  display: flex;
-  flex-grow: 3;
-  flex-basis: auto;
-  flex-direction: column;
-  width: 105px;
-  height: 100px; }
-  .logout-container #logout-button {
-    color: #4D4D4D;
-    font-size: 25px;
-    font-family: 'Merriweather Sans', sans-serif;
-    width: 105px;
-    height: 40px;
-    background: none;
-    border: none;
-    margin-top: 20px;
-    padding: 0; }
-  .logout-container #new-pic-button {
-    color: #4D4D4D;
-    font-size: 25px;
-    font-family: 'Merriweather Sans', sans-serif;
-    width: 105px;
-    height: 40px;
-    background: none;
-    border: none;
-    margin-top: 0px;
-    padding: 0; }
-  .logout-container #new-button {
-    color: #4D4D4D;
-    font-size: 25px;
-    font-family: 'Merriweather Sans', sans-serif;
-    margin: -16px;
-    background: none;
-    border: none;
-    height: 10px;
-    width: 100px;
-    padding: 0; }
-
-#login-button {
+#logout-button {
   color: #4D4D4D;
-  font-size: 16px;
+  font-size: 25px;
   font-family: 'Merriweather Sans', sans-serif;
+  width: 105px;
+  height: 40px;
   background: none;
   border: none;
-  padding: 0;
-  margin-right: 58px;
-  margin-top: -10px; }
+  margin-top: -5px;
+  padding: 0; }
+
+#new-pic-button {
+  color: #4D4D4D;
+  font-size: 25px;
+  font-family: 'Merriweather Sans', sans-serif;
+  width: 105px;
+  height: 40px;
+  background: none;
+  border: none;
+  margin-top: 0px;
+  padding: 0; }
+
+#new-button {
+  color: #4D4D4D;
+  font-size: 25px;
+  font-family: 'Merriweather Sans', sans-serif;
+  margin: -16px;
+  background: none;
+  border: none;
+  height: 10px;
+  width: 100px;
+  padding: 0; }
 
 #new-user-button {
   height: 10px;
@@ -135,6 +128,10 @@ form {
   flex-grow: 2;
   object-fit: cover;
   box-shadow: 10px 0px 10px #888888; }
+
+.image:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50); }
 
 /* Dropdown */
 .dropdown {
@@ -192,7 +189,6 @@ form {
   flex-direction: row;
   flex-wrap: wrap;
   flex-grow: 3;
-  width: 900px;
   flex-basis: auto;
   margin: 0 auto 0 auto; }
 
@@ -202,8 +198,6 @@ form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 700px;
-  max-width: 700px;
   border-top: dotted 1px;
   border-color: #D3D3D3;
   max-height: 130px; }
@@ -234,6 +228,7 @@ form {
   margin-top: 30px; }
 
 .edit-container {
+  float: right;
   font-size: 10px;
   font-family: 'Merriweather Sans', sans-serif;
   color: #4D4D4D;
@@ -334,17 +329,36 @@ form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-grow: 3;
-  width: 1000px;
+  flex-grow: 1;
   flex-basis: auto;
-  margin: 0 auto 0 auto; }
+  margin: 13px 140px auto; }
 
-.sign-up-container {
+.title-container {
   display: flex;
   flex-wrap: wrap;
   flex-grow: 3;
-  width: 900px;
+  width: 100%;
   margin: 0 auto 0 auto; }
+
+#new-title {
+  margin-top: 100x;
+  font-family: 'Merriweather Sans', sans-serif;
+  color: #4D4D4D;
+  font-size: 50px;
+  border-right: dotted 1px;
+  border-color: #D3D3D3;
+  height: 80px;
+  padding-right: 20px; }
+
+#login-button {
+  color: #4D4D4D;
+  font-size: 25px;
+  font-family: 'Merriweather Sans', sans-serif;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 50px;
+  margin-top: -10px; }
 
 #sign-up-button {
   color: #4D4D4D;
@@ -355,13 +369,22 @@ form {
   background: none;
   border: none;
   margin-top: -10px;
-  margin-left: -20px;
   padding: 0; }
+
+.login-form {
+  margin-right: 50px; }
 
 @media screen and (max-width: 600px) {
   .container {
     display: flex;
     margin: 0 auto 0 auto; }
+  .login-header {
+    position: relative;
+    float: right;
+    margin-top: 52px;
+    margin-left: 25px; }
+  .dd-menu {
+    margin-top: -20px; }
   .image {
     width: 100%;
     height: 160px;
@@ -377,14 +400,8 @@ form {
     margin-top: 8px; }
   .dd-button {
     margin-top: -60px;
-    margin-left: -42px;
-    font-size: 16px;
-    width: 75px; }
-  .underbox {
-    color: #4D4D4D;
-    font-size: 400px;
-    margin-bottom: -10px;
-    margin-top: -14px; }
+    margin-left: -44px;
+    font-size: 16px; }
   .login-button {
     background-color: #ffffff;
     font-family: 'Merriweather Sans', sans-serif;
@@ -409,16 +426,14 @@ form {
     margin-top: 10px;
     margin-left: 40px; }
     .logout-container #logout-button {
-      margin-top: -60px;
-      margin-left: -60px;
+      margin-top: -48px;
+      margin-left: -56px;
       font-size: 16px; }
   .container2 {
-    width: 300px;
-    max-width: 300px;
     display: flex;
     margin: 0 auto 0 auto; }
   #image {
-    width: 320px;
+    width: 100%;
     height: 190px; }
   .edit-header {
     height: 100px; }
@@ -435,14 +450,16 @@ form {
     margin-top: 10px;
     margin-left: 40px; }
     .edit-container #delete-button {
-      margin-top: -53px;
-      margin-left: -42px;
+      margin-top: -20px;
+      margin-left: -124px;
       font-size: 16px; }
   #edit-button {
     margin-top: -60px;
     margin-left: -42px;
     font-size: 16px;
-    width: 75px; } }
+    width: 75px; }
+  #new-title {
+    font: 16px; } }
 
 @media screen and (min-width: 1000px) {
   .container {

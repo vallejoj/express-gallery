@@ -102,7 +102,7 @@ passport.deserializeUser(function(userId, done) {
 
 app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.redirect("/gallery");
+  res.redirect("/gallery/new");
 });
 
 
@@ -110,7 +110,7 @@ app.get("/logout", (req, res) => {
 app.post('/login', passport.authenticate('local',
  {
   successRedirect: '/gallery',
-  failureRedirect: '/gallery'
+  failureRedirect: '/gallery/new'
 }))
 
 function userAuthenticated (req, res, next){

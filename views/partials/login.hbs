@@ -1,5 +1,4 @@
 
-{{#if user}}
 <div class="logout-container">
 
 
@@ -43,32 +42,5 @@ _LOGOUT
 </div>
 
 
-{{else}}
-<div class="logout-container">
-<label class="dropdown">
-
-  <div class="dd-button">
-    _LOGIN
-  </div>
-
-  <input type="checkbox" class="dd-input" id="test">
-
-  <ul class="dd-menu">
-   <form class="form" action="/login" method="post">
-  USERNAME: <input type="text" name="username"><br>
-  PASSWORD:  <input type="text" name="password"><br>
-  <button id="login-button" type="submit" ><u>SUBMIT</u></button>
-
-  <a href="/gallery/new">
-  <h1 id="new-user-button"><u>NEW USER?</u></h1>
-  </a>
-</form>
-
-  </ul>
-
-</label>
-</div>
-
-{{/if}}
 
     <script src="/js/metaFields.js"></script>

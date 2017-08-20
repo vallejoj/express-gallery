@@ -6,8 +6,6 @@ const Gallery = require('../models').Gallery;
 const photoMetas = require('../collections/photoMeta.js').photoMetas;
 
 router.get('/',(req,res) => {
-
-
   Gallery.findAll({
     order: [ [ "createdAt", "DESC"]]
   })
@@ -76,7 +74,6 @@ router.get('/logins', (req,res)=>{
 })
 
   router.get('/:id',(req,res) => {
-
     Gallery.findById(parseInt(req.params.id))
       .then((photo) =>{
         res.render('gallery/photo', {photo: photo})
@@ -85,9 +82,20 @@ router.get('/logins', (req,res)=>{
         console.log(err)
     })
   });
+
+  const removeValues = (obj) => {
+    for(var key in obj){
+      if(obj.hasOwnProperty(key)){
+        obj[key] = "";
+      }
+    }
+    return obj;
+  }
+
   router.route('/:id/edit')
     .get((req,res)=>{
         var photoID = parseInt(req.params.id)
+          var query = {id: photoID}
         Gallery.findById(photoID)
       .then((photo) =>{
         var query = {id: photoID}
@@ -99,14 +107,12 @@ router.get('/logins', (req,res)=>{
           data:data
         })
     })
-
       })
       .catch((err)=>{
         console.log(err)
       })
     })
     .put((req,res) =>{
-      console.log(req.body.meta)
       Gallery.update({
         author: req.body.author,
         link: req.body.link,
@@ -116,19 +122,44 @@ router.get('/logins', (req,res)=>{
           id:req.params.id
         }
       })
-      .then((gallery) =>{
-        photoMetas().updateOne({id: parseInt(req.params.id)}, {
-                $set:req.body.meta
+      .then((picture)=>{
+      console.log(req.body)
+      var metaRemove = req.body
+      var addMeta = req.body.meta
+      var photoID = parseInt(req.params.id)
+      var query = {id: photoID}
 
-              }).then(results=>{
-                console.log("RESULTS",results)
-              })
-              console.log("WHOOOOOO",req.body.meta)
+      delete metaRemove.author;
+      delete metaRemove.link;
+      delete metaRemove.description;
+      photoMetas().findOne(query,(err,data)=>{
+        if(data){
+          photoMetas().update(
+            query,
+            {
+              $set: addMeta
+            }
+          )
+          photoMetas().update(
+            query,
+            {
+              $unset: removeValues(metaRemove)
+            }
+          )
+        }else{
+          var metaObj = req.body.meta;
+          metaObj.id = pictureID;
+          photoMeta().insertOne(metaObj)
+        }
+      })
+      })
+      .then((gallery) =>{
         res.redirect(`/gallery/${req.params.id}/edit`)
       })
       .catch((err)=>{
         console.log(err)
       })
+
     })
     .delete((req,res)=>{
       Gallery.destroy({
@@ -136,11 +167,15 @@ router.get('/logins', (req,res)=>{
           id:req.params.id
         }
       })
+
       .then((gallery) =>{
+        photoMetas().findOneAndDelete({id:pictureID});
        res.redirect('/gallery')
       })
       .catch((err)=>{
         console.log(err)
       })
     });
+
+
 module.exports = router;

@@ -19,18 +19,23 @@
             <ul class="dd-menu2">
 
             <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
+
               <input type="hidden" name="_method" value="PUT">
+              {{#each data}}
+              <input type="checkbox" name="{{@key}}" value="{{this}}">
+              {{@key}}:{{this}}
+            {{/each}}
               AUTHOR: <input type="text" name="author"value = "{{photo.author}}"><br>
               LINK: <input type="text" name="link" value = "{{photo.link}}"><br>
               DESCRIPTION: <input type="text" name="description" value = "{{photo.description}}"><br>
+                  <button id="send-edit" type="submit">_SEND</button>
               <div class="add_meta_field">
                 <ul id="meta_fields"></ul>
 
                 <button id="add_meta_field_button" type="button" >Edit Meta Data</button>
               </div>
-              <button id="send-edit" type="submit">_SEND</button>
-
             </form>
+
 
             </ul>
 
@@ -45,7 +50,9 @@
 
   <div class="photo_edit">
     <img id="image" src="{{photo.link}}" alt="not working">
-    <h2 id="underbox">{{photo.author}}:{{photo.description}}: {{data.tag}}</h2>
+    <h2 id="underbox">{{photo.author}}:{{photo.description}} </h2>
+
+
   </div>
 
   {{else}}
