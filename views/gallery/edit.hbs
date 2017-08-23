@@ -10,14 +10,13 @@
 
     {{#if photo}}
       <div class="edit-container">
-        <label class="dropdown2">
 
-            <p id="edit-button">
-              EDIT
-            </p>
-              <input type="checkbox" class="dd-input2" id="test">
-            <ul class="dd-menu2">
 
+            <button id="myBtn">EDIT</button>
+
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
             <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
 
               <input type="hidden" name="_method" value="PUT">
@@ -28,25 +27,28 @@
               AUTHOR: <input type="text" name="author"value = "{{photo.author}}"><br>
               LINK: <input type="text" name="link" value = "{{photo.link}}"><br>
               DESCRIPTION: <input type="text" name="description" value = "{{photo.description}}"><br>
-                  <button id="send-edit" type="submit">_SEND</button>
+                  <button id="send-edit" type="submit">SEND</button>
+                  <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button id="delete-button" type="submit">DELETE</button>
+                  </form>
               <div class="add_meta_field">
                 <ul id="meta_fields"></ul>
 
                 <button id="add_meta_field_button" type="button" >Edit Meta Data</button>
               </div>
             </form>
+          </div>
+
+         </div>
 
 
-            </ul>
 
-            <form method="post" action="/gallery/{{photo.id}}/edit" enctype="application/x-www-form-urlencoded">
-              <input type="hidden" name="_method" value="DELETE">
-              <button id="delete-button" type="submit">DELETE</button>
-            </form>
 
-          </label>
+
+
       </div>
-  </div>
+
 
   <div class="photo_edit">
     <img id="image" src="{{photo.link}}" alt="not working">
@@ -65,3 +67,4 @@
 </div>
 
 <script src="/js/metaFields.js"></script>
+<script src="/js/styles.js"></script>
